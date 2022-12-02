@@ -4,7 +4,7 @@ import HomeScreen from './Screens/HomeScreen';
 
 function App() {
   return (
-    <div className=" bg-cyan-900 ">
+    <div className=" bg-gray-900 ">
      <HomeScreen />
     </div>
   );

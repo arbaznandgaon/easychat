@@ -2,7 +2,7 @@ import React from 'react'
 
 function ContactList() {
   return (
-    <div className=''>ContactList</div>
+    <div className='text-3xl mx-auto'>ContactList</div>
   )
 }
 
