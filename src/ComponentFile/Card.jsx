@@ -7,7 +7,7 @@ function Card(props) {
     <img className='rounded-full  w-12 h-12 mt-2 ' src={props.img}></img>
     <div>
     <p className='text-xl text-white'>{props.name}</p>
-    <p className='text-sm text-white'>Your Message was Deleted</p>
+    <p className='text-sm text-white'>{props.msg}</p>
     </div>
     </div>
     <div className='pr-2 text-white'>
