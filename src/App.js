@@ -6,8 +6,11 @@ function App() {
   return (
     <div className=" bg-gray-900 ">
      <HomeScreen />
-    </div>
+      </div>
   );
 }
+
+
+   
 
 export default App;

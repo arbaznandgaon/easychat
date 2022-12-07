@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Card from './Card';
 
-function ContactList() {
+function ContactList(props) {
   const arr=[{name : "Arbaz", msg : "Hey",time:"05:00", img : 'https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8'},
  { name :"Arfat", msg :"Hey",time:"01:00", img :'https://pps.whatsapp.net/v/t61.24694-24/312280018_169906322326594_541453286877171405_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdT3AL7EgIKRAUbEJp-7Ei-wOwUA64jlsBk5Q5cO3ccwzQ&oe=639896B0'},
  { name:"Sumera", msg:"Hey",time:"02:00", img:'https://pps.whatsapp.net/v/t61.24694-24/305814467_140632885097825_6270874185595100738_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdRrFUziYp5xYKRUd7vfS6UtbHrA-Li9-ABcvYzhVj2HOQ&oe=6398A6FD'},
@@ -21,7 +21,10 @@ function ContactList() {
    {name:"Lubna", msg : "Hey",time:"09:00", img : 'https://pps.whatsapp.net/v/t61.24694-24/305964501_576567887595090_883276564924387164_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdQ8W1TI_FraJRf4gpEokzYKWh9Cr_xjEP6B8c9i_BGFEQ&oe=6398AAD6'},
   { name:"Nikhat", msg : "Hey",time:"10:00", img : 'https://pps.whatsapp.net/v/t61.24694-24/180331887_856279525298753_2313013107755184080_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdRUFGR9qoFF9BwHljoHOszS2rHGYroiR8M8r72JHiwgUg&oe=6398A336'},
 ]
-  
+ 
+function ABC(x){
+  props.setContact(x)
+}
   return (
   
  <div className='bg-gray-800 col-span-2'>
@@ -43,7 +46,7 @@ function ContactList() {
      </div>
      <div className='overflow-y-scroll max-h-[37rem]'>
      {
-          arr.map((item,index) => <Card key={index} time={item.time} name={item.name} img={item.img}  msg={item.msg} />)
+          arr.map((item,index) => <button key={index} onClick={()=> ABC(item)} className='w-full '><Card  time={item.time} name={item.name} img={item.img}  msg={item.msg} /></button>)
         }
  
  </div>
