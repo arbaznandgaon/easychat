@@ -37,7 +37,7 @@ function ABC(x){
 <MoreVertIcon/>
 </div>  
      </div>
-     <div className='bg-gray-800 flex justify-between h-12  items-center'>
+     <div className='bg-gray-800 flex justify-between h-12 border-b border-gray-500 items-center'>
      <div className='bg-gray-700 items-center rounded-sm ml-4 pl-2'>
       <SearchIcon className='text-gray-400'/>
       <input placeholder='Search or Start new Chat' className=' rounded-sm w-80 bg-transparent border-hidden'></input>

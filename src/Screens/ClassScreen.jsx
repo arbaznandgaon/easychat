@@ -9,7 +9,7 @@ function ClassScreen(props) {
   button:"Follow"}]
    
   return (
-    <div className="h-max w-80 mx-auto px-4 py-4 rounded-2xl bg-gradient-to-b from-pink-500 to-red-400">
+    <div className="h-max w-80 mt-4 mx-auto px-4 py-4 rounded-2xl bg-gradient-to-b from-pink-500 to-red-400">
       <div className="  h-min   rounded-lg">
         <div  className="flex items-center justify-center h-40 ">
           <img

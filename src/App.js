@@ -5,9 +5,12 @@ import ClassScreen from './Screens/ClassScreen';
 
 function App() {
   return (
-    <div className=" bg-gray-900 h-screen w-screen">
-     <HomeScreen />
-<ClassScreen/>
+    <div>
+        <div className=" bg-gray-900 h-screen w-screen" >
+        <HomeScreen />
+        </div>
+    
+{/* <ClassScreen/> */}
       </div>
   );
 }
