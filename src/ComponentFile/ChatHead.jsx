@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
 function ChatHead(props) {
-  console.log(props.p2)
+  
   return (
     <div className='flex justify-between '>
 <div className='flex space-x-2'>

@@ -40,11 +40,11 @@ function ABC(x){
      <div className='bg-gray-800 flex justify-between h-12  items-center'>
      <div className='bg-gray-700 items-center rounded-sm ml-4 pl-2'>
       <SearchIcon className='text-gray-400'/>
-      <input placeholder='Search or Start new Chat' className='rounded-sm w-72 bg-transparent border-hidden'></input>
+      <input placeholder='Search or Start new Chat' className=' rounded-sm w-80 bg-transparent border-hidden'></input>
      </div>
      <FilterListIcon className='mr-2'/>
      </div>
-     <div className='overflow-y-scroll max-h-[37rem]'>
+     <div className='overflow-y-scroll mt max-h-[37rem]'>
      {
           arr.map((item,index) => <button key={index} onClick={()=> ABC(item)} className='w-full '><Card  time={item.time} name={item.name} img={item.img}  msg={item.msg} /></button>)
         }

@@ -2,8 +2,8 @@ import React from 'react'
 
 function Card(props) {
   return (
-    <div className=' justify-between flex border-y border-gray-500 hover:bg-gradient-to-bl from-slate-900 to-gray-300'>
-    <div className='flex  items-center '>
+    <div className=' justify-between flex border-b border-gray-500 hover:bg-gradient-to-bl from-slate-900 to-gray-300'>
+    <div className='flex  items-center gap-x-2'>
     <img className='rounded-full  w-12 h-12 mt-2 ' src={props.img}></img>
     <div>
     <p className='text-xl text-white '>{props.name}</p>
