@@ -3,7 +3,7 @@ import React from 'react'
 function Login(props) {
   
   return (
-    <div cla>
+    <div >
       <div className="pt-20 bg-gradient-to-r from-indigo-500 to-red-300 h-screen">
     <div className='h-72 px-2 space-y-8 pt-12  ml-[35rem]   w-1/5 bg-purple-300'>
        <div className='ml-12 '>
@@ -21,10 +21,6 @@ function Login(props) {
 
        </div>
        </div>
-
-
-
-
     </div>
     </div>
   )

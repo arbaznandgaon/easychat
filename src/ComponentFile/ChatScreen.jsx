@@ -11,7 +11,7 @@ function ChatScreen(props) {
         <div className="bg-slate-700 text-3xl h-12 w-full top-0 absolute">
           <ChatHead p2={props.p1} />
         </div>
-        <div className="banner  h-screen overflow-y-scroll  pt-16 pb-8 bg-purple-400 ">
+        <div className="bg-[url('https://wallpaperaccess.com/full/7331539.jpg')] h-screen overflow-y-scroll  pt-16 pb-8 ">
           <ChatScroll />
         </div>
 

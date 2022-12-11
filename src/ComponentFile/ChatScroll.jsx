@@ -14,7 +14,7 @@ function Message(props) {
             <p>{props.text}</p>
           </div>
         </div>
-      )}
+      )} 
     </div>
   );
 }
