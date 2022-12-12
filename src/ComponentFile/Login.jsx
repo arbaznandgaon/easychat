@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Login(props) {
-  
+  console.log(props)
   return (
     <div >
       <div className="pt-20 bg-gradient-to-r from-indigo-500 to-red-300 h-screen">

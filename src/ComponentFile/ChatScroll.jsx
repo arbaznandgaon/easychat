@@ -3,18 +3,18 @@ import React from "react";
 function Message(props) {
   return (
     <div>
-      {props.me ? (
+      {props.me ? 
         <div className="px-2 py-1 rounded-br-lg bg-slate-800 text-gray-200 w-max">
           {" "}
           <p>{props.text}</p>
         </div>
-      ) : (
+       : 
         <div className="flex justify-end w-full">
-          <div className="rounded-bl-lg px-2 py-1 bg-white text-gray-800 ">
+          <div className="rounded-bl-lg px-2 py-1 bg-slate-400 text-white ">
             <p>{props.text}</p>
           </div>
         </div>
-      )} 
+      } 
     </div>
   );
 }
