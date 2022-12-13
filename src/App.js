@@ -5,7 +5,7 @@ import ClassScreen from "./Screens/ClassScreen";
 import { useState } from "react";
 import Change from "./work/Change";
 import Change1 from "./work/Change1";
-import Host from "./ComponentFile/Host";
+
 
 import Login from "./ComponentFile/Login";
 
@@ -13,6 +13,7 @@ function App() {
   const [user, setUser] = useState(false);
   
   const [mor,setMor] = useState(null)
+  const [ant,setAnt]= useState(null)
   
 
   return (
@@ -23,9 +24,11 @@ function App() {
     </div> */}
      {/* {<ClassScreen/> } */}
 
-    
     <div>
     {mor ? <Change1/>: <Change  getin={setMor}/>}
+    </div>
+    <div>
+      {ant ? <ClassScreen/>:<Change1 out={setAnt}/>}
     </div>
     {/* <Host/> */}
 
