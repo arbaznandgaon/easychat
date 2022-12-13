@@ -5,6 +5,7 @@ import ClassScreen from "./Screens/ClassScreen";
 import { useState } from "react";
 import Change from "./work/Change";
 import Change1 from "./work/Change1";
+import Host from "./ComponentFile/Host";
 
 import Login from "./ComponentFile/Login";
 
@@ -16,8 +17,8 @@ function App() {
 
   return (
     <div> 
-    {/* // <div className=" bg-gray-900 h-screen w-screen">
-    //   {user ? <HomeScreen /> : <Login  login={setUser} />}
+  {/* <div className=" bg-gray-900 h-screen w-screen">
+      {user ? <HomeScreen /> : <Login  login={setUser} />}
 
     </div> */}
      {/* {<ClassScreen/> } */}
@@ -26,6 +27,7 @@ function App() {
     <div>
     {mor ? <Change1/>: <Change  getin={setMor}/>}
     </div>
+    {/* <Host/> */}
 
 
      
