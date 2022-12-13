@@ -9,7 +9,7 @@ function Message(props) {
           <p>{props.text}</p>
         </div>
        : 
-        <div className="flex justify-end w-full">
+        <div className="flex justify-end w-full ">
           <div className="rounded-bl-lg px-2 py-1 bg-slate-400 text-white ">
             <p>{props.text}</p>
           </div>
@@ -21,7 +21,8 @@ function Message(props) {
 
 function ChatScroll() {
   return (
-    <div className=" h-full w-full space-y-4 px-3">
+    <div className="pt-12 ">
+      <div className=" h-full w-full space-y-4 px-3 py-2">
       <Message text="Hi There" me={true} />
       <Message text="Hello" me={false} />
       <Message text="How are you" me={true} />
@@ -127,6 +128,7 @@ function ChatScroll() {
       <Message text="Im fine too" me={true} />
       <Message text="123" me={false} />
       <Message text="321000" me={true} />
+    </div>
       <div className="h-16"></div>
     </div>
   );
