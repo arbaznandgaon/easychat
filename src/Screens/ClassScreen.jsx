@@ -6,7 +6,7 @@ import UpperBody from './UpperBody'
 
 function ClassScreen(props) {
     const arr=[{name: "Morgan Sweeny",p1: 12, p2:1000, followers:"followers", following:"following", text:" Morgan has collected ants since they were 6 years old and now has many  dozen ants",
-  button:"Follow"}]
+  button:"Following"}]
    
   return (
     <div className="h-max w-80 mt-4 mx-auto px-4 py-4 rounded-2xl bg-gradient-to-b from-pink-500 to-red-400">

@@ -18,7 +18,7 @@ function UpperBody(props) {
         <a className="text-gray-400 ml-12">{props.followers}</a>
         <a className="text-gray-400 ml-16">{props.following}</a> <br />
         <button
-          className="rounded-full bg-yellow-400 mt-4 h-10 ml-12 text-am w-48"
+          className="rounded-full bg-yellow-400 mt-4 h-10 ml-12 font-bold w-48"
         >
           {props.button}
         </button>
