@@ -5,9 +5,10 @@ import { useState } from 'react'
 
 function Change1(props) {
 
-const [data, setData]= useState({
+const [data, setData]= useState({ name: "Unknown" ,
 fo: "???",
 fl : "???",
+button: "Follow",
 discription: "??"})
 
   return (
@@ -26,8 +27,8 @@ discription: "??"})
           />
         </div>
         
-       <div className='mt-24'>
-       <a className="ml-16 text-xl font-bold">Morgan Sweeney</a> <br />
+       <div className='mt-20'>
+       <a className="flex justify-center text-xl font-bold">{data.name}</a> 
         <a className="ml-24">Ant Collector</a>
        </div>
        <div className="mt-">
@@ -41,11 +42,11 @@ discription: "??"})
             
     </div>
     
-      <button onClick={()=> setData({ fo:"12", fl:"1000", discription: "Morgan has collected ants since they were 6 years old and now has many  dozen ants"})} 
+      <button onClick={()=> setData({name:"Morgan Sweeney",button:"Following", fo:"12", fl:"1000", discription: "Morgan has collected ants since they were 6 years old and now has many  dozen ants"})} 
       className=' rounded-full bg-yellow-400 h-10 text-am 
  w-48  px-8 py-1 mt font-bold mt-3 ml-[3rem]'>
-  Follow</button>
-   <div className='ml-8 mt-3 font-bold'>
+  {data.button}</button>
+   <div className='flex justify-center p-3 font-bold'>
   {data.discription}
    </div>
    
