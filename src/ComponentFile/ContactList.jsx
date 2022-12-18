@@ -1,5 +1,6 @@
 import React from 'react'
 import GroupsIcon from '@mui/icons-material/Groups';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import ReplayIcon from '@mui/icons-material/Replay';
 import MessageIcon from '@mui/icons-material/Message';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
@@ -7,7 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Card from './Card';
 
-function ContactList(props) {
+function ContactList(use,out, ...props) {
   const arr=[{name : "Arbaz", msg : "Hey",time:"05:00", img : 'https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8'},
  { name :"Arfat", msg :"Hey",time:"01:00", img :'https://pps.whatsapp.net/v/t61.24694-24/312280018_169906322326594_541453286877171405_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdT3AL7EgIKRAUbEJp-7Ei-wOwUA64jlsBk5Q5cO3ccwzQ&oe=639896B0'},
  { name:"Sumera", msg:"Hey",time:"02:00", img:'https://pps.whatsapp.net/v/t61.24694-24/305814467_140632885097825_6270874185595100738_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdRrFUziYp5xYKRUd7vfS6UtbHrA-Li9-ABcvYzhVj2HOQ&oe=6398A6FD'},
@@ -25,6 +26,9 @@ function ContactList(props) {
 function ABC(x){
   props.setContact(x)
 }
+
+console.log(use)
+
   return (
   
  <div className='bg-gray-800 col-span-2'>
@@ -33,6 +37,7 @@ function ABC(x){
 <div className='space-x-2 text-sm text-gray-300'>
 <GroupsIcon/>
 <ReplayIcon/>
+<button onClick={()=>out()}><PowerSettingsNewIcon/></button>
 <MessageIcon/>
 <MoreVertIcon/>
 </div>  

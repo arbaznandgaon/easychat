@@ -16,14 +16,14 @@ function Login(props) {
         <input className='rounded-sm' type="password"></input>
        </div>
        <div>
-        <button onClick={props.login}  className='bg-gray-200 w-max px-2 py-1 mt-6 font-bold ml-16'>Login</button>
+        {/* <button onClick={props.login}  className='bg-gray-200 w-max px-2 py-1 mt-6 font-bold ml-16'>Login</button> */}
        </div>
        <a className='ml-20 mt-4'>OR</a>
        <div className="mt-2 ml-12 flex space-x-3">
-                <button onClick={()=> props.login()} className=" flex items-center space-x-1 px-4 border py-[6px] w-1/2 justify-center rounded-md">
+                {/* <button onClick={()=> props.login()} className=" flex items-center space-x-1 px-4 border py-[6px] w-1/2 justify-center rounded-md">
                     <img className=" h-5 w-5" src="//heathmont.imgix.net/bitcasino/images/google-oauth2.svg?auto=compress,format" loading="lazy" />
                         <span>Google</span>
-                </button>
+                </button> */}
             </div>
 
        </div>
