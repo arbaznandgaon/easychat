@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect,useState } from 'react'
+import { useEffect,useState,useLayoutEffect } from 'react'
 
 function App0() {
 
@@ -34,30 +34,44 @@ function App0() {
         //         console.log('working '+message)
         //     })
 
-const [count,setCount]= useState(100);
-const [data,setData]= useState(100);
+// const [count,setCount]= useState(100);
+// const [data,setData]= useState(100);
 
-function Abc(){
-   console.log("HI there")
-}
+// function Abc(){
+//    console.log("HI there")
+// }
 
-useEffect(() => {
- Abc()
+// useEffect(() => {
+//   console.log("HI there")
  
-}, [data])
-useEffect(() => {
-    console.log("working"+count)
-   
-  }, [count])
+// },[data] )
+// useEffect(() => {
+//   console.log("HI ")
+  
+  // },[] )
+
+
+  useEffect(()=>{
+    console.log("first use")
+  })
+  useEffect(()=>{
+    console.log("second use")
+  })
+  useLayoutEffect(()=>{
+    console.log("third use")
+  })
+  function abc(){
+    console.log("fourth use")
+  }
+abc()
+
 
 
   return (
-    <div className='App0'>
-        <h1>{count}</h1>
-         <h1>{data}</h1> 
-         <button onClick={()=>setData(data +1)}>D</button>
-        <button onClick={()=>{setCount (count +1)}}>C</button>
-    </div>
+    <div className='text-2xl flex justify-center'>
+
+
+        </div>
   )
 
         
