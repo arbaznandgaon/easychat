@@ -20,19 +20,15 @@ function App() {
     .then((result) => {     
       const data = result.user;
       setUser(data);
-      // ...
-    }).catch((error) => {
+     }).catch((error) => {
       console.log(error)
       setUser(null)
     });
   }
 
 async function SignOut(){
- await signOut(auth).then(()=>{}).catch(()=>{})
+ await signOut(auth).then((hi)=>{console.log(hi)}).catch((hello)=>{console.log(hello)})
 }
-
-
-
 
 
 

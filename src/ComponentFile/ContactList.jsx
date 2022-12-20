@@ -8,7 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Card from './Card';
 
-function ContactList(use,out, ...props) {
+function ContactList({user,logout, ...props}) {
   const arr=[{name : "Arbaz", msg : "Hey",time:"05:00", img : 'https://play-lh.googleusercontent.com/7Ac5TgaL15Ra4bvFVHJKCdJp4qvnL4djZj5bKc6RN-MZjzrvkeHbJytek0NPTSdZcp8'},
  { name :"Arfat", msg :"Hey",time:"01:00", img :'https://pps.whatsapp.net/v/t61.24694-24/312280018_169906322326594_541453286877171405_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdT3AL7EgIKRAUbEJp-7Ei-wOwUA64jlsBk5Q5cO3ccwzQ&oe=639896B0'},
  { name:"Sumera", msg:"Hey",time:"02:00", img:'https://pps.whatsapp.net/v/t61.24694-24/305814467_140632885097825_6270874185595100738_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdRrFUziYp5xYKRUd7vfS6UtbHrA-Li9-ABcvYzhVj2HOQ&oe=6398A6FD'},
@@ -27,17 +27,17 @@ function ABC(x){
   props.setContact(x)
 }
 
-console.log(use)
+console.log(user,logout)
 
   return (
   
  <div className='bg-gray-800 col-span-2'>
      <div className='text-3xl px-2 mx-auto h-12 bg-slate-700 items-center  justify-between flex'>
-      <img className='rounded-full  w-10 h-10  ' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtjqnBcrig4AXoJyoCB0H1Mp1TkSGB0Ii8iQ&usqp=CAU'></img>
+      <img className='rounded-full  w-10 h-10  ' src={user?.photoURL}/>
 <div className='space-x-2 text-sm text-gray-300'>
 <GroupsIcon/>
 <ReplayIcon/>
-<button onClick={()=>out()}><PowerSettingsNewIcon/></button>
+<button onClick={()=>logout()}><PowerSettingsNewIcon/></button>
 <MessageIcon/>
 <MoreVertIcon/>
 </div>  
