@@ -1,9 +1,11 @@
 import HomeScreen from "./Screens/HomeScreen";
 import { useState } from "react";
 import { getAuth,onAuthStateChanged,signOut, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import Login from "./ComponentFile/Login";
 import app from './firebase'
 import { useEffect } from "react";
+import Loader from "./ComponentFile/Loader";
 
 
 
@@ -13,6 +15,7 @@ function App() {
 
   const auth= getAuth(app);
   const provider = new GoogleAuthProvider();
+  const db = getFirestore(app);
 
 
   async function SignIn(){
@@ -27,7 +30,7 @@ function App() {
   }
 
 async function SignOut(){
- await signOut(auth).then((hi)=>{console.log(hi)}).catch((hello)=>{console.log(hello)})
+ await signOut(auth).then(()=>{}).catch(()=>{})
 }
 
 
@@ -42,6 +45,21 @@ useEffect(()=>{
     }
   }) 
 },[user])
+
+const [load, setLoad]= useState(true);
+setTimeout(()=>{
+setLoad(false)
+},3000)
+
+if (load) return <Loader/>
+
+
+
+
+
+
+
+
 
 
   return (
