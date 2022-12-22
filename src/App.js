@@ -89,7 +89,7 @@ const handleClick=()=>{
       result.user.phoneNumber+ "Number Verified";
     })
     .catch((err)=>{
-      console.log(err);
+      console.loh(err);
     });
   });
 }
@@ -103,13 +103,15 @@ const handleClick=()=>{
 
   return (
     <div> 
-
+    {/* <div>
+      <button>Click</button>
+    </div> */}
 
   <div className=" bg-gray-900 h-screen w-screen">
-      {user ? <HomeScreen user={user} logout={SignOut}/> : <Login  login={SignIn} Mob={handleClick} />}   
+      {user ? <HomeScreen user={user} logout={SignOut}/> : <Login  login={SignIn} />}  
       
     {/* { {mor ? <Change1/>: <Change getin={setMor}/>} } */}
-   </div> 
+  </div>
 <div>
   <div id="recaptcha"></div>
   <label></label>
