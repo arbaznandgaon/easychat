@@ -51,24 +51,51 @@ function App0() {
   // },[] )
 
 
-  useEffect(()=>{
-    console.log("first use")
-  })
-  useEffect(()=>{
-    console.log("second use")
-  })
-  useLayoutEffect(()=>{
-    console.log("third use")
-  })
-  function abc(){
-    console.log("fourth use")
-  }
-abc()
+//   useEffect(()=>{
+//     console.log("first use")
+//   })
+//   useEffect(()=>{
+//     console.log("second use")
+//   })
+//   useLayoutEffect(()=>{
+//     console.log("third use")
+//   })
+//   function abc(){
+//     console.log("fourth use")
+//   }
+// abc()
+
+
+// let number = [1,2,3,4,5]
+
+// let newNumber = [...number].reverse()
+
+//  console.log(number)
+//  console.log(newNumber)
+
+
+const [name, setName]=useState("Arbaz")
+
+
+
+
+
+
+
+
+
+
+
 
 
 
   return (
-    <div className='text-2xl flex justify-center'>
+    <div className='text-2xl flex font-bold flex-col items-center  justify-center h-screen 
+    bg-[url(https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg)]'>
+<h1>{name}</h1> 
+<button onClick={()=>setName("Arbaz Nandgaon")}>Change</button>
+
+
 
 
         </div>
