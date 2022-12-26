@@ -3,21 +3,34 @@ import TagFacesIcon from "@mui/icons-material/TagFaces";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import MicIcon from "@mui/icons-material/Mic";
 import { useState } from "react";
+import { collection, addDoc } from "firebase/firestore"; 
 
-function WriteMsg() {
+function WriteMsg(db,user,...props) {
 
 const schema={
-  uid: 'arbaz123',
+
   myMessage:"",
+  uid:user?.uid,
+  img:user?.photoUrl,
+  displayName:user?.displayName
 }
 
-const [text,setText]= useState(schema)
+const [message,setMessage]= useState(schema)
 
 function handleChange(event){
   console.log(event)
   const {value} = event.target;
-  setText({uid:'sumera123',myMessage:value})
+  let tempobj= message;
+  tempobj["myMessage"]= value;
+  setMessage(tempobj)
 }
+
+async function postMessage(){
+  console.log(message)
+  //  await addDoc(collection(db, "groupMessages"), message);
+
+}
+
 
 
   return (
@@ -27,7 +40,7 @@ function handleChange(event){
       </div>
       <input
       name="myMessage"
-      value={text.myMessage}
+      value={message.myMessage}
       onChange={handleChange}
         placeholder="Type a Message"
         className="bg-slate-500 text-lg pl-2 rounded-lg mt-3 h-10 w-full"

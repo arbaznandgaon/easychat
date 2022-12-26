@@ -9,7 +9,7 @@ function HomeScreen({user,db,logout}) {
     <div className="mx-auto overflow-y-hidden  bg-gray-900 w-[75rem] h-screen grid grid-cols-6">
       <ContactList user={user} db={db} logout={logout} setContact={setActive} />
 
-      {active ? <ChatScreen p1={active} db={db} /> : " "}
+      {active ? <ChatScreen user={user} p1={active} db={db} /> : " "}
     </div>
   );
 }
