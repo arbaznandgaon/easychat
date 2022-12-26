@@ -9,9 +9,9 @@ function ChatHead(props) {
   return (
     <div className='flex justify-between '>
 <div className='flex space-x-2'>
-    <img className='rounded-full ml-2  w-10 h-10 mt-1' src={props.p2?.img} />
+    <img className='rounded-full ml-2  w-10 h-10 mt-1' src={props.p2?.photoURL} />
     <div className=''>
-    <p className='text-lg font-semibold text-white'>{props.p2?.name}</p>
+    <p className='text-lg font-semibold text-white'>{props.p2?.displayName}</p>
     <p className='text-sm text-gray-400  '>online</p>
     </div>
 </div>

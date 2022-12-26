@@ -1,7 +1,7 @@
 import HomeScreen from "./Screens/HomeScreen";
 import { useState } from "react";
 import { getAuth,onAuthStateChanged,signOut, GoogleAuthProvider, signInWithPopup, signInWithPhoneNumber } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import Login from "./ComponentFile/Login";
 import app from './firebase'
 import { useEffect } from "react";
@@ -20,12 +20,32 @@ function App() {
   const provider = new GoogleAuthProvider();
   const db = getFirestore(app);
 
+useEffect(()=>{
+if (!user) return;
+checkNewLogIn()
+},[user])
+
+ async function checkNewLogIn(){
+  const docRef = doc(db, "users", user?.uid);
+const docSnap = await getDoc(docRef);
+
+if (!docSnap.exists()) {
+  await setDoc(doc(db, "users", user?.uid), user);
+} 
+
+
+}
+
+
+
+
 
   async function SignIn(){
   await  signInWithPopup(auth, provider)
-    .then((result) => {     
-      const data = result.user;
-      setUser(data);
+    .then((result) => { 
+      const {displayName,email,photoURL,uid}= result.user
+      setUser({"displayName":displayName,"email":email,"photoURL":photoURL,"uid":uid});
+      
      }).catch((error) => {
       console.log(error)
       setUser(null)
@@ -41,18 +61,19 @@ async function SignOut(){
 useEffect(()=>{
   onAuthStateChanged(auth, (u)=>{
     if(u){
-      setUser(u)
+      const {displayName,email,photoURL,uid}= u;
+      setUser({"displayName":displayName,"email":email,"photoURL":photoURL,"uid":uid});
     }
     else{
       setUser(null)
     }
   }) 
-},[user])
+},[])
 
 const [load, setLoad]= useState(true);
 setTimeout(()=>{
 setLoad(false)
-},5000)
+},1000)
 
 if (load) return <Loader/>
 
@@ -84,7 +105,7 @@ const handleClick=()=>{
     res
     .confirm(code)
     .then((result)=>{
-      console.log(result.user,"User");
+      // console.log(result.user,"User");
       document.querySelector("label").textContent=
       result.user.phoneNumber+ "Number Verified";
     })
@@ -108,15 +129,15 @@ const handleClick=()=>{
     </div> */}
 
   <div className=" bg-gray-900 h-screen w-screen">
-      {user ? <HomeScreen user={user} logout={SignOut}/> : <Login  login={SignIn} />}  
+      {user ? <HomeScreen user={user} db={db} logout={SignOut}/> : <Login  login={SignIn} />}  
       
     {/* { {mor ? <Change1/>: <Change getin={setMor}/>} } */}
   </div>
-<div>
+{/* <div>
   <div id="recaptcha"></div>
   <label></label>
   <button onClick={handleClick}>Click</button>
-</div>
+</div> */}
    </div>
    
   )

@@ -1,27 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import GroupsIcon from '@mui/icons-material/Groups';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { useState } from 'react';
 import ReplayIcon from '@mui/icons-material/Replay';
 import MessageIcon from '@mui/icons-material/Message';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import Card from './Card';
+import { collection, getDocs } from "firebase/firestore";
 
-function ContactList({user,logout, ...props}) {
-  const arr=[{name : "Arbaz", msg : "Hey",time:"05:00", img : 'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
- { name :"Arfat", msg :"Hey",time:"01:00", img :'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
- { name:"Sumera", msg:"Hey",time:"02:00", img:'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-   {name:"Sadie", msg : "Hey",time:"03:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-{   name:"Farha", msg : "Hey",time:"04:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-  { name:"Anmol", msg : "Hey",time:"05:00", img : 'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
-{   name:"Priya", msg : "Hey",time:"06:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-{   name:"Ejaz", msg : "Hey",time:"07:00", img : 'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
-  { name:"Misba", msg : "Hey",time:"11:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-  { name:"Seimen", msg : "Hey",time:"08:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-   {name:"Lubna", msg : "Hey",time:"09:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-  { name:"Nikhat", msg : "Hey",time:"10:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
-]
+function ContactList({user,db, logout, ...props}) {
+//   const arr=[{name : "Arbaz", msg : "Hey",time:"05:00", img : 'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
+//  { name :"Arfat", msg :"Hey",time:"01:00", img :'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
+//  { name:"Sumera", msg:"Hey",time:"02:00", img:'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+//    {name:"Sadie", msg : "Hey",time:"03:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+// {   name:"Farha", msg : "Hey",time:"04:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+//   { name:"Anmol", msg : "Hey",time:"05:00", img : 'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
+// {   name:"Priya", msg : "Hey",time:"06:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+// {   name:"Ejaz", msg : "Hey",time:"07:00", img : 'https://i.pinimg.com/736x/dc/97/fe/dc97fe22a1f4405829f0a2804e3be830.jpg'},
+//   { name:"Misba", msg : "Hey",time:"11:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+//   { name:"Seimen", msg : "Hey",time:"08:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+//    {name:"Lubna", msg : "Hey",time:"09:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+//   { name:"Nikhat", msg : "Hey",time:"10:00", img : 'https://cdn.dribbble.com/users/899296/screenshots/16831151/media/8eaa942850a4c5b1b0e5131302488aa2.jpg?compress=1&resize=400x300'},
+// ]
+const [arr,setArr]= useState([])
+
+useEffect(()=>{
+  if(!user) return;
+  getAllusers()
+},[user])
+
+async function getAllusers(){
+  const ref =collection(db, "users")
+  const querySnapshot = await getDocs(ref);
+  let temparr=[];
+querySnapshot.forEach((item) => {
+  // doc.data() is never undefined for query doc snapshots
+  temparr.push(item.data())
+});
+setArr(temparr)
+}
+
+
  
 function ABC(x){
   props.setContact(x)
@@ -51,7 +72,8 @@ console.log(user,logout)
      </div>
      <div className='overflow-y-scroll mt max-h-[37rem]'>
      {
-          arr.map((item,index) => <button key={index} onClick={()=> ABC(item)} className='w-full '><Card  time={item.time} name={item.name} img={item.img}  msg={item.msg} /></button>)
+          arr.filter(item=>item.uid!==user.uid).map(item => <button key={item.uid} onClick={()=> ABC(item)} className='w-full '>
+            <Card  time={item.time} name={item.displayName} img={item.photoURL}  msg={item.msg} /></button>)
         }
  
  </div>
