@@ -18,19 +18,18 @@ const schema={
 const [message,setMessage]= useState(schema)
 
 function handleChange(event){
-  console.log(event)
-  const {value} = event.target;
-  let tempobj= message;
-  tempobj["myMessage"]= value;
-  setMessage(tempobj)
-}
+  
+  const {name,value} = event.target;
+  setMessage(cm=>({...cm, [name] : value})
+  )}
 
 async function postMessage(){
-  console.log(message)
-  //  await addDoc(collection(db, "groupMessages"), message);
+  // console.log(message)
+   await addDoc(collection(db, "groupMessages"), message);
+   setMessage(schema)
 
 }
-
+// button.addEventListener("click",postMessage());
 
 
   return (
@@ -44,8 +43,7 @@ async function postMessage(){
       onChange={handleChange}
         placeholder="Type a Message"
         className="bg-slate-500 text-lg pl-2 rounded-lg mt-3 h-10 w-full"
-      />
-
+      /><button onClick={()=>postMessage()} className="rounded-full mt-2 px-4 py-2 text-xl bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">Send</button>
       <div className="pr-2">
         <MicIcon className="mt-3 " />
       </div>
