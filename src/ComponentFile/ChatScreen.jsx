@@ -4,7 +4,7 @@ import ChatHead from "./ChatHead";
 import WriteMsg from "./WriteMsg";
 import ChatScroll from "./ChatScroll";
 
-function ChatScreen(db,user,...props) {
+function ChatScreen({db,user,...props}) {
   const [messagearray, setMessagearray]= useState([])
   return (
     <div className="relative col-span-4 h-screen border-l border-gray-400">
@@ -13,7 +13,7 @@ function ChatScreen(db,user,...props) {
           <ChatHead p2={props.p1} />
         </div>
         <div className="bg-[url('https://cdn.wallpapersafari.com/54/0/HluF7g.jpg')] h-screen overflow-y-scroll ">
-          <ChatScroll />
+          <ChatScroll user={user} db={db} message={messagearray} />
         </div>
 
         <div className="bg-slate-700 w-full h-16 text-3xl absolute bottom-0">

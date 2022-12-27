@@ -5,16 +5,16 @@ import MicIcon from "@mui/icons-material/Mic";
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore"; 
 
-function WriteMsg(db,user,...props) {
+function WriteMsg({db,user,...props}) {
 
 const schema={
 
   myMessage:"",
   uid:user?.uid,
-  img:user?.photoUrl,
+  img:user?.photoURL,
   displayName:user?.displayName
 }
-
+// console.log(user)
 const [message,setMessage]= useState(schema)
 
 function handleChange(event){
@@ -24,13 +24,15 @@ function handleChange(event){
   )}
 
 async function postMessage(){
+  if (message.myMessage === "") return;
   // console.log(message)
-   await addDoc(collection(db, "groupMessages"), message);
+   await addDoc(collection(db, "grpMSG"), message);
    setMessage(schema)
+   
 
 }
 // button.addEventListener("click",postMessage());
-
+// console.log(db)
 
   return (
     <div className="flex space-x-2 ">

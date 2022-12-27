@@ -1,137 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { collection, onSnapshot } from "firebase/firestore";
 
-function Message(props) {
-  return (
-    <div>
-      {props.me ? (
-        <div className="px-2 py-1 rounded-br-lg bg-slate-800 text-gray-200 w-max">
-          {" "}
-          <p>{props.text}</p>
-        </div>
-      ) : (
-        <div className="flex justify-end w-full ">
-          <div className="rounded-bl-lg px-2 py-1 bg-slate-400 text-white ">
-            <p>{props.text}</p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
+function Message({data ,me}){
 
-function ChatScroll() {
-  return (
-    <div className="pt-12 ">
-      <div className=" h-full w-full space-y-4 px-3 py-2">
-        <Message text="Hi There" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321" me={true} />
-        <Message text="Hi" me={true} />
-        <Message text="Hello" me={false} />
-        <Message text="How are you" me={true} />
-        <Message text="Im Good, wbu" me={false} />
-        <Message text="Im fine too" me={true} />
-        <Message text="123" me={false} />
-        <Message text="321000" me={true} />
+  return (<div>
+      {me ? <div className=' w-full max-h-max  flex justify-end'>
+          <div className=' max-w-max rounded-br-none px-4 py-2 rounded-lg bg-slate-800 text-gray-200'>
+          <p>{data.myMessage}</p>
       </div>
-      <div className="h-16"></div>
-    </div>
-  );
+      </div> : <div className='flex space-x-3'>
+      <img src={data.img} className="rounded-full h-8 w-8" />
+      <div className=' max-h-max max-w-max px-4 py-2 rounded-bl-none rounded-lg bg-gray-200 text-gray-800'>
+      <p className=' text-xs text-red-600'>{data.displayName}</p>
+      <p>{data.myMessage}</p>
+      </div>
+      </div>}
+  </div>)
+
 }
 
-export default ChatScroll;
+
+function ChatScroll({user,db,...props}) {
+  const [messages,setMessages] = useState([]);
+
+  useEffect(()=>{
+      onSnapshot(collection(db, "grpMSG"), (querySnapshot) => {
+      const tempMessageArr = [];
+      querySnapshot.forEach((doc) => {
+          tempMessageArr.push(doc.data());
+      });
+      setMessages(tempMessageArr);
+
+      });
+  },[db])
+
+
+  console.log(messages)
+
+  
+
+return (
+  <div className=' flex flex-col h-full '>
+      
+      <div className='w-full py-20 px-8 flex flex-col justify-end space-y-3 '>
+      <div className=' h-[45rem] xl:h-[50rem] ' />
+      {messages.map((message ,index) => <Message me={message.uid === user.uid} data={message} key={index}  />)}
+      {/* <Message text="Hello" me={true} /> */}
+       
+</div>
+  </div>
+)
+}
+
+export default ChatScroll
