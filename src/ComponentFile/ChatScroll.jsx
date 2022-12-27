@@ -29,7 +29,7 @@ function ChatScroll({user,db,...props}) {
       querySnapshot.forEach((doc) => {
           tempMessageArr.push(doc.data());
       });
-      setMessages(tempMessageArr);
+      setMessages(tempMessageArr);  
 
       });
   },[db])
