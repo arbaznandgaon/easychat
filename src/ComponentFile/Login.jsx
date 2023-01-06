@@ -16,7 +16,7 @@ function Login(props) {
         <input className='rounded-sm' type="password"></input>
        </div>
        <div>
-        <button onClick={props.login}  className='bg-gray-200 w-max px-2 py-1 mt-6 font-bold ml-16'>Login</button>
+        <button   className='bg-gray-200 w-max px-2 py-1 mt-6 font-bold ml-16'>Login</button>
        </div>
        <a className='ml-20 mt-4'>OR</a>
        <div className="mt-2 ml-10 flex space-x-3">

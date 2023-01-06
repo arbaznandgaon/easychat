@@ -1,4 +1,6 @@
 import HomeScreen from "./Screens/HomeScreen";
+import Change from "./work/Change";
+import Change1 from "./work/Change1";
 import { useState } from "react";
 import {
   getAuth,
@@ -19,7 +21,7 @@ import { phoneNumber } from "./PhoneNumber";
 
 function App() {
   const [user, setUser] = useState(null);
-  // // const [mor,setMor] = useState(null)
+  const [mor,setMor] = useState(null)
 
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
@@ -76,14 +78,15 @@ function App() {
         setUser(null);
       }
     });
+    
   }, []);
 
-  const [load, setLoad] = useState(true);
-  setTimeout(() => {
-    setLoad(false);
-  }, 3000);
+  // const [load, setLoad] = useState(true);
+  // setTimeout(() => {
+  //   setLoad(false);
+  // }, 3000);
 
-  if (load) return <Loader />;
+  // if (load) return <Loader />;
 
   // handleClick=()=>{
   //   let recaptcha = new firebase.auth.RecaptchaVerifier('recaptcha');
@@ -130,13 +133,13 @@ function App() {
     </div> */}
 
       <div className=" bg-gray-900 h-screen w-screen">
-        {user ? (
+        {/* {user ? (
           <HomeScreen user={user} db={db} logout={SignOut} />
         ) : (
           <Login login={SignIn} />
-        )}
+        )} */}
 
-        {/* { {mor ? <Change1/>: <Change getin={setMor}/>} } */}
+        {mor ? <Change1/> : <Change getin={setMor}/>} 
       </div>
       {/* <div>
   <div id="recaptcha"></div>
